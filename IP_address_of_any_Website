@@ -1,0 +1,24 @@
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Scanner;
+
+public class GetWebsiteIPAddress {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the website name (e.g., example.com): ");
+        String website = scanner.nextLine();
+        
+        try {
+            // Getting the IP address of the given website
+            InetAddress ip = InetAddress.getByName(website);
+            
+            // Displaying the IP address
+            System.out.println("IP Address of " + website + ": " + ip.getHostAddress());
+        } catch (UnknownHostException e) {
+            System.out.println("Unable to determine IP address for " + website);
+            e.printStackTrace();
+        } finally {
+            scanner.close();
+        }
+    }
+}
